@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "dustrial_decor",
+  "version": "${version}",
+
+  "name": "Dustrial Decor",
+  "description": "This is a Fabric port for 'Dustrial Decor!",
+  "authors": [
+    "BlueDuck & Slomaxonical"
+  ],
+  "contact": {
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "LGPL-3",
+  "icon": "assets/dustrial_decor/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.slomaxonical.dustrial.decor.DustrialDecor"
+    ],
+    "client": [
+      "com.slomaxonical.dustrial.decor.DustrialDecorClient"
+    ],
+    "fabric-datagen": [
+      "com.slomaxonical.dustrial.decor.data.DustrialDatagen"
+    ]
+  },
+  "mixins": [
+    "dustrial_decor.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.13.3",
+    "fabric": "*",
+    "minecraft": "1.18.x",
+    "java": ">=17",
+    "autoconfig1u": ">=3.4.0"
+  },
+  "suggests": {
+  }
+}

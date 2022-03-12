@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "dustrial_decor:rusty_sheet_metal_plating_slab"
+    }
+  },
+  "result": {
+    "item": "dustrial_decor:rusty_sheet_metal_plating_vertical_slab",
+    "count": 3
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "dustrial_decor:config_enabled",
+      "config": "enableVerticalSlabs"
+    }
+  ]
+}

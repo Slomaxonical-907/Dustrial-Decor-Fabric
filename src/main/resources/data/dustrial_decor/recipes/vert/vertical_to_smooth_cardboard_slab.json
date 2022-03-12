@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dustrial_decor:smooth_cardboard_vertical_slab"
+    }
+  ],
+  "result": {
+    "item": "dustrial_decor:smooth_cardboard_slab"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "dustrial_decor:config_enabled",
+      "config": "enableVerticalSlabs"
+    }
+  ]
+}

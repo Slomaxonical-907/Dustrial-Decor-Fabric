@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "dustrial_decor:block/large_glow_lantern_top",
+    "north": "dustrial_decor:block/large_glow_lantern",
+    "south": "dustrial_decor:block/large_glow_lantern",
+    "east": "dustrial_decor:block/large_glow_lantern",
+    "west": "dustrial_decor:block/large_glow_lantern",
+    "up": "dustrial_decor:block/large_glow_lantern_top",
+    "down": "dustrial_decor:block/large_lantern_bottom"
+  }
+}
