@@ -1,6 +1,8 @@
 package com.slomaxonical.dustrial.decor.data.provider;
 
 import com.google.common.collect.ImmutableList;
+import com.slomaxonical.dustrial.decor.configs.ConfigResourceCondition;
+import com.slomaxonical.dustrial.decor.configs.DustrialConfigs;
 import com.slomaxonical.dustrial.decor.data.tags.DustrialTags;
 import com.slomaxonical.dustrial.decor.registry.DustrialBlocks;
 import com.slomaxonical.dustrial.decor.registry.DustrialItems;
@@ -30,15 +32,12 @@ public class DustrialRecipeProvider extends FabricRecipeProvider {
 
     @Override
     protected void generateRecipes(Consumer<RecipeJsonProvider> exporter) {
+        Consumer<RecipeJsonProvider> vertExporter = withConditions(exporter, ConfigResourceCondition.configEnabeled("enableVerticalSlabs"));
+
         ShapedRecipeJsonBuilder.create(ANCHOR).input('$',LARGE_CHAIN).input('#', Items.IRON_INGOT).pattern(" $ ").pattern(" # ").pattern("# #").criterion("has_large_chain",conditionsFromItem(DustrialBlocks.LARGE_CHAIN)).offerTo(exporter);
         ShapedRecipeJsonBuilder.create(HOOK).input('$',LARGE_CHAIN).input('#', Items.IRON_INGOT).pattern(" $").pattern(" #").pattern("# ").criterion("has_large_chain",conditionsFromItem(DustrialBlocks.LARGE_CHAIN)).offerTo(exporter);
         ShapedRecipeJsonBuilder.create(BARBED_CHAIN_LINK_FENCE,16).input('$', Items.IRON_NUGGET).input('#', Blocks.CHAIN).pattern("#$#").pattern("$#$").pattern("#$#").criterion("has_chain",conditionsFromItem(Items.CHAIN)).offerTo(exporter);
         ShapedRecipeJsonBuilder.create(BARBED_IRON_BARS,16).input('$', Items.IRON_NUGGET).input('#', Items.IRON_INGOT).pattern("$$$").pattern("###").pattern("###").criterion("has_chain",conditionsFromItem(Items.IRON_INGOT)).offerTo(exporter);
-
-//        withConditions( gimme example of how to pass this consumer plzz ,DefaultResourceConditions.allModsLoaded("tech_reborn"));
-//        withConditions(provider -> {
-//            ShapedRecipeJsonBuilder.create(ANCHOR).input('$', LARGE_CHAIN).input('#', Items.IRON_INGOT).pattern(" $ ").pattern(" # ").pattern("# #").criterion("has_large_chain", conditionsFromItem(DustrialBlocks.LARGE_CHAIN)).offerTo(exporter);
-//        }, DefaultResourceConditions.allModsLoaded("tech_reborn"));
 
         //NEON
         offerNeonLightRecipe(exporter, BLACK_LIGHT, Blocks.BLACK_STAINED_GLASS);
@@ -151,15 +150,15 @@ public class DustrialRecipeProvider extends FabricRecipeProvider {
         offerSlabNStairsRecipes(exporter, SMOOTH_CARDBOARD_SLAB, SMOOTH_CARDBOARD_STAIRS, SMOOTH_CARDBOARD);
 
         //todo:figure out how to generate the fabric load condition
-        /*offerVerticalSlabRecipes(exporter, SMOOTH_CARDBOARD_VERTICAL_SLAB, SMOOTH_CARDBOARD_SLAB);
-        offerVerticalSlabRecipes(exporter, DustrialBlocks.BOLTED_INDUSTRIAL_IRON_VERTICAL_SLAB, DustrialBlocks.BOLTED_INDUSTRIAL_IRON_SLAB);
-        offerVerticalSlabRecipes(exporter,CINDER_BRICKS_VERTICAL_SLAB, CINDER_BRICKS_SLAB);
-        offerVerticalSlabRecipes(exporter, CAST_IRON_BRICKS_VERTICAL_SLAB, CAST_IRON_BRICKS_SLAB);
-        offerVerticalSlabRecipes(exporter, MINI_PADDED_VERTICAL_SLAB, MINI_PADDED_SLAB);
-        offerVerticalSlabRecipes(exporter, RUSTY_SHEET_METAL_PLATING_VERTICAL_SLAB, RUSTY_SHEET_METAL_PLATING_SLAB);
-        offerVerticalSlabRecipes(exporter, RUSTY_SHEET_METAL_TREADING_VERTICAL_SLAB, RUSTY_SHEET_METAL_TREADING_SLAB);
-        offerVerticalSlabRecipes(exporter, SHEET_METAL_PLATING_VERTICAL_SLAB, SHEET_METAL_PLATING_SLAB);
-        offerVerticalSlabRecipes(exporter, SHEET_METAL_TREADING_VERTICAL_SLAB, SHEET_METAL_TREADING_SLAB);*/
+        offerVerticalSlabRecipes(vertExporter, SMOOTH_CARDBOARD_VERTICAL_SLAB, SMOOTH_CARDBOARD_SLAB);
+        offerVerticalSlabRecipes(vertExporter, DustrialBlocks.BOLTED_INDUSTRIAL_IRON_VERTICAL_SLAB, DustrialBlocks.BOLTED_INDUSTRIAL_IRON_SLAB);
+        offerVerticalSlabRecipes(vertExporter,CINDER_BRICKS_VERTICAL_SLAB, CINDER_BRICKS_SLAB);
+        offerVerticalSlabRecipes(vertExporter, CAST_IRON_BRICKS_VERTICAL_SLAB, CAST_IRON_BRICKS_SLAB);
+        offerVerticalSlabRecipes(vertExporter, MINI_PADDED_VERTICAL_SLAB, MINI_PADDED_SLAB);
+        offerVerticalSlabRecipes(vertExporter, RUSTY_SHEET_METAL_PLATING_VERTICAL_SLAB, RUSTY_SHEET_METAL_PLATING_SLAB);
+        offerVerticalSlabRecipes(vertExporter, RUSTY_SHEET_METAL_TREADING_VERTICAL_SLAB, RUSTY_SHEET_METAL_TREADING_SLAB);
+        offerVerticalSlabRecipes(vertExporter, SHEET_METAL_PLATING_VERTICAL_SLAB, SHEET_METAL_PLATING_SLAB);
+        offerVerticalSlabRecipes(vertExporter, SHEET_METAL_TREADING_VERTICAL_SLAB, SHEET_METAL_TREADING_SLAB);
 
     }
 //    public static void offerShapedRecipe
@@ -198,8 +197,8 @@ public class DustrialRecipeProvider extends FabricRecipeProvider {
         offerSlabRecipe( exporter, slab, input);
         offerStairsRecipe(exporter,stair, input);
     }
-    /*public static void offerVerticalSlabRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible input){
-        ShapedRecipeJsonBuilder.create(output,3).input('#', input).pattern("#").pattern("#").pattern("#").criterion("has_slab",conditionsFromItem(input)).offerTo(exporter);
-        createTransmutationRecipe(input, Ingredient.ofItems(output)).criterion(hasItem(input),conditionsFromItem(input)). offerTo(exporter,"vertical_to_"+input.asItem().toString());
-    }*/
+    public static void offerVerticalSlabRecipes(Consumer<RecipeJsonProvider> vertExporter, ItemConvertible output, ItemConvertible input){
+        ShapedRecipeJsonBuilder.create(output,3).input('#', input).pattern("#").pattern("#").pattern("#").criterion("has_slab",conditionsFromItem(input)).offerTo(vertExporter,"vertical/"+output.asItem().toString());
+        createTransmutationRecipe(input, Ingredient.ofItems(output)).criterion(hasItem(input),conditionsFromItem(input)). offerTo(vertExporter,"vertical/vertical_to_"+input.asItem().toString());
+    }
 }

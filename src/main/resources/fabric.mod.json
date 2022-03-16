@@ -12,7 +12,7 @@
     "sources": "https://github.com/FabricMC/fabric-example-mod"
   },
 
-  "license": "LGPL-3",
+  "license": "ARR",
   "icon": "assets/dustrial_decor/icon.png",
 
   "environment": "*",
