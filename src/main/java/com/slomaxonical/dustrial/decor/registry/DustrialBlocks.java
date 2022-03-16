@@ -10,8 +10,6 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 import com.slomaxonical.dustrial.decor.DustrialDecor;
 import com.slomaxonical.dustrial.decor.blocks.*;
-import com.slomaxonical.dustrial.decor.blocks.DirectionalBlock;
-import com.slomaxonical.dustrial.decor.blocks.DustrialStairsBlock;
 import com.slomaxonical.dustrial.decor.items.CardboardArmorMaterial;
 import net.minecraft.block.*;
 import net.minecraft.item.*;

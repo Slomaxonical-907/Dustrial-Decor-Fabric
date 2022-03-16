@@ -2,10 +2,10 @@ package com.slomaxonical.dustrial.decor.data.provider;
 
 import com.slomaxonical.dustrial.decor.registry.DustrialBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTablesProvider;
 import net.minecraft.data.server.BlockLootTableGenerator;
 
-public class DustrialBlockLootTableProvider extends FabricBlockLootTableProvider {
+public class DustrialBlockLootTableProvider extends FabricBlockLootTablesProvider {
     public DustrialBlockLootTableProvider(FabricDataGenerator dataGenerator) {
         super(dataGenerator);
     }

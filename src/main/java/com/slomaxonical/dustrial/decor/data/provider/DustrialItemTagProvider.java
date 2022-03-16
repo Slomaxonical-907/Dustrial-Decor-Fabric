@@ -8,7 +8,6 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.tag.ItemTags;
-import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.jetbrains.annotations.Nullable;
@@ -16,16 +15,6 @@ import org.jetbrains.annotations.Nullable;
 public class DustrialItemTagProvider extends FabricTagProvider.ItemTagProvider {
     public DustrialItemTagProvider(FabricDataGenerator dataGenerator, @Nullable BlockTagProvider blockTagProvider) {
         super(dataGenerator, blockTagProvider);
-    }
-    private FabricTagBuilder<Item> getOrCreateTagBuilder(Identifier id) {
-        TagKey<Item> tag = TagKey.of(Registry.ITEM_KEY, id);
-        return this.getOrCreateTagBuilder(tag);
-    }
-
-    private void copy(Identifier id) {
-        TagKey<Block> blockTag = TagKey.of(Registry.BLOCK_KEY, id);
-        TagKey<Item> itemTag = TagKey.of(Registry.ITEM_KEY, id);
-        this.copy(blockTag, itemTag);
     }
     @Override
     protected void generateTags() {

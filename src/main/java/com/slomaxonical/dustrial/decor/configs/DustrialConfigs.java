@@ -2,6 +2,7 @@ package com.slomaxonical.dustrial.decor.configs;
 
 import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
+import me.sargunvohra.mcmods.autoconfig1u.shadowed.blue.endless.jankson.Comment;
 
 @Config(name = "dustrial_decor")
  public class DustrialConfigs implements ConfigData {

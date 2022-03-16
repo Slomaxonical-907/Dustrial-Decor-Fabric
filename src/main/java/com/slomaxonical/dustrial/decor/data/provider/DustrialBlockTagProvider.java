@@ -3,9 +3,10 @@ package com.slomaxonical.dustrial.decor.data.provider;
 import com.slomaxonical.dustrial.decor.registry.DustrialBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.tag.TagFactory;
 import net.minecraft.block.Block;
 import net.minecraft.tag.BlockTags;
-import net.minecraft.tag.TagKey;
+import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -14,7 +15,7 @@ public class DustrialBlockTagProvider extends FabricTagProvider.BlockTagProvider
         super(dataGenerator);
     }
     private FabricTagBuilder<Block> getOrCreateTagBuildeer(Identifier id) {
-        TagKey<Block> tag = TagKey.of(Registry.BLOCK_KEY, id);
+        Tag.Identified<Block> tag = TagFactory.BLOCK.create(id);
         return this.getOrCreateTagBuilder(tag);
     }
 
