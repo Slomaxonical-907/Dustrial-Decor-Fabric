@@ -20,7 +20,6 @@ import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Formatting;
@@ -55,7 +54,7 @@ public class VerticalSlabBlock extends Block implements Waterloggable {
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
             super.appendTooltip(stack, world, tooltip, options);
         if(!AutoConfig.getConfigHolder(DustrialConfigs.class).getConfig().enableVerticalSlabs)
-            tooltip.add(new TranslatableText("misc.dustrial_decor.vertical_config").formatted(Formatting.RED));
+            tooltip.add(Text.translatable("misc.dustrial_decor.vertical_config").formatted(Formatting.RED));
     }
     @Override
     public BlockState rotate(BlockState state, BlockRotation rot) {

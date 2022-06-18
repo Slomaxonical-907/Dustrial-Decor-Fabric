@@ -11,7 +11,6 @@ import org.jetbrains.annotations.Nullable;
 import com.slomaxonical.dustrial.decor.DustrialDecor;
 import com.slomaxonical.dustrial.decor.blocks.*;
 import com.slomaxonical.dustrial.decor.blocks.DirectionalBlock;
-import com.slomaxonical.dustrial.decor.blocks.DustrialStairsBlock;
 import com.slomaxonical.dustrial.decor.items.CardboardArmorMaterial;
 import net.minecraft.block.*;
 import net.minecraft.item.*;
@@ -35,11 +34,11 @@ public class DustrialBlocks {
 
     public static final Block MINI_PADDED_STAIRS = new PaddedStairs(FabricBlockSettings.copyOf(PADDED_BLOCK));
 
-    public static final Block PADDED_TRAPDOOR = new DustrialTrapdoor(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.WOOL));
+    public static final Block PADDED_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.WOOL).nonOpaque());
 
-    public static final Block PADDED_DOOR = new DustrialDoor(FabricBlockSettings.copyOf(PADDED_TRAPDOOR));
+    public static final Block PADDED_DOOR = new DoorBlock(FabricBlockSettings.copyOf(PADDED_TRAPDOOR));
 
-    public static final Block CHAIN_LINK_FENCE = new DustrialPane(FabricBlockSettings.copyOf(Blocks.IRON_BARS).sounds(BlockSoundGroup.CHAIN), false);
+    public static final Block CHAIN_LINK_FENCE = new PaneBlock(FabricBlockSettings.copyOf(Blocks.IRON_BARS).sounds(BlockSoundGroup.CHAIN));
 
     public static final Block BARBED_CHAIN_LINK_FENCE = new DustrialPane(FabricBlockSettings.copyOf(Blocks.IRON_BARS).sounds(BlockSoundGroup.CHAIN), true);
 
@@ -60,9 +59,9 @@ public class DustrialBlocks {
     public static final Block HOOK = new HookBlock(FabricBlockSettings.copyOf(Blocks.CHAIN));
 
 
-    public static final Block CHAIN_TRAPDOOR = new DustrialTrapdoor(FabricBlockSettings.of(Material.STONE).strength(1F, 1F).sounds(BlockSoundGroup.CHAIN));
+    public static final Block CHAIN_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.of(Material.STONE).strength(1F, 1F).sounds(BlockSoundGroup.CHAIN).mapColor(MapColor.TERRACOTTA_BLUE).nonOpaque());
 
-    public static final Block CHAIN_DOOR = new DustrialDoor(FabricBlockSettings.copyOf(CHAIN_TRAPDOOR));
+    public static final Block CHAIN_DOOR = new DoorBlock(FabricBlockSettings.copyOf(CHAIN_TRAPDOOR));
 
     public static final Block INDUSTRIAL_IRON_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
 
@@ -74,11 +73,11 @@ public class DustrialBlocks {
 
     public static final Block BOLTED_INDUSTRIAL_IRON_VERTICAL_SLAB = new VerticalSlabBlock(FabricBlockSettings.copyOf(BOLTED_INDUSTRIAL_IRON_BLOCK));
 
-    public static final Block BOLTED_INDUSTRIAL_IRON_STAIRS = new DustrialStairsBlock(BOLTED_INDUSTRIAL_IRON_BLOCK.getDefaultState(), FabricBlockSettings.copyOf(BOLTED_INDUSTRIAL_IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
+    public static final Block BOLTED_INDUSTRIAL_IRON_STAIRS = new StairsBlock(BOLTED_INDUSTRIAL_IRON_BLOCK.getDefaultState(), FabricBlockSettings.copyOf(BOLTED_INDUSTRIAL_IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
 
-    public static final Block INDUSTRIAL_IRON_TRAPDOOR = new DustrialTrapdoor(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
+    public static final Block INDUSTRIAL_IRON_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).nonOpaque());
 
-    public static final Block INDUSTRIAL_IRON_DOOR = new DustrialDoor(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
+    public static final Block INDUSTRIAL_IRON_DOOR = new DoorBlock(FabricBlockSettings.copyOf(INDUSTRIAL_IRON_TRAPDOOR));
 
     public static final Block CAST_IRON_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
 
@@ -90,11 +89,11 @@ public class DustrialBlocks {
 
     public static final Block CAST_IRON_BRICKS_VERTICAL_SLAB = new VerticalSlabBlock(FabricBlockSettings.copyOf(CAST_IRON_BRICKS));
 
-    public static final Block CAST_IRON_BRICKS_STAIRS = new DustrialStairsBlock(CAST_IRON_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(CAST_IRON_BRICKS).sounds(BlockSoundGroup.NETHERITE));
+    public static final Block CAST_IRON_BRICKS_STAIRS = new StairsBlock(CAST_IRON_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(CAST_IRON_BRICKS).sounds(BlockSoundGroup.NETHERITE));
 
     public static final Block ENGRAVED_CAST_IRON_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
 
-    public static final Block CAST_IRON_BALUSTRADE = new DustrialPane(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
+    public static final Block CAST_IRON_BALUSTRADE = new PaneBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
 
 //    public static final Block CAST_IRON_FACADE = new DustrialPane(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
 //    //public static final RegistryObject<Item> CAST_IRON_FACADE_ITEM = ITEMS.register("cast_iron_facade", () -> new BlockItem(CAST_IRON_FACADE.get(), new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)));
@@ -105,7 +104,7 @@ public class DustrialBlocks {
 
     public static final Block SHEET_METAL_PLATING_VERTICAL_SLAB = new VerticalSlabBlock(FabricBlockSettings.copyOf(SHEET_METAL_PLATING));
 
-    public static final Block SHEET_METAL_PLATING_STAIRS = new DustrialStairsBlock(SHEET_METAL_PLATING.getDefaultState(), FabricBlockSettings.copyOf(SHEET_METAL_PLATING));
+    public static final Block SHEET_METAL_PLATING_STAIRS = new StairsBlock(SHEET_METAL_PLATING.getDefaultState(), FabricBlockSettings.copyOf(SHEET_METAL_PLATING));
 
     public static final Block SHEET_METAL_PANELING = new Block(FabricBlockSettings.of(Material.METAL, MapColor.IRON_GRAY).strength(3.0F, 3.5F).sounds(BlockSoundGroup.METAL));
 
@@ -119,11 +118,11 @@ public class DustrialBlocks {
 
     public static final Block SHEET_METAL_TREADING_VERTICAL_SLAB = new VerticalSlabBlock(FabricBlockSettings.copyOf(SHEET_METAL_TREADING));
 
-    public static final Block SHEET_METAL_TREADING_STAIRS = new DustrialStairsBlock(SHEET_METAL_TREADING.getDefaultState(), FabricBlockSettings.copyOf(SHEET_METAL_TREADING));
+    public static final Block SHEET_METAL_TREADING_STAIRS = new StairsBlock(SHEET_METAL_TREADING.getDefaultState(), FabricBlockSettings.copyOf(SHEET_METAL_TREADING));
 
-    public static final Block SHEET_METAL_TRAPDOOR = new DustrialTrapdoor(FabricBlockSettings.of(Material.STONE).strength(1F, 1F).sounds(BlockSoundGroup.METAL));
+    public static final Block SHEET_METAL_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.of(Material.STONE).strength(1F, 1F).sounds(BlockSoundGroup.METAL));
 
-    public static final Block SHEET_METAL_DOOR = new DustrialDoor(FabricBlockSettings.copyOf(SHEET_METAL_TRAPDOOR));
+    public static final Block SHEET_METAL_DOOR = new DoorBlock(FabricBlockSettings.copyOf(SHEET_METAL_TRAPDOOR));
 
     //hreer RUSTY_SHEET_METAL
 
@@ -133,7 +132,7 @@ public class DustrialBlocks {
 
     public static final Block RUSTY_SHEET_METAL_PLATING_VERTICAL_SLAB = new VerticalSlabBlock(FabricBlockSettings.copyOf(RUSTY_SHEET_METAL_PLATING));
 
-    public static final Block RUSTY_SHEET_METAL_PLATING_STAIRS = new DustrialStairsBlock(RUSTY_SHEET_METAL_PLATING.getDefaultState(), FabricBlockSettings.copyOf(RUSTY_SHEET_METAL_PLATING));
+    public static final Block RUSTY_SHEET_METAL_PLATING_STAIRS = new StairsBlock(RUSTY_SHEET_METAL_PLATING.getDefaultState(), FabricBlockSettings.copyOf(RUSTY_SHEET_METAL_PLATING));
 
     public static final Block RUSTY_SHEET_METAL_PANELING = new Block(FabricBlockSettings.of(Material.METAL, MapColor.IRON_GRAY).strength(3.0F, 3.5F).sounds(BlockSoundGroup.METAL));
 
@@ -147,11 +146,11 @@ public class DustrialBlocks {
 
     public static final Block RUSTY_SHEET_METAL_TREADING_VERTICAL_SLAB = new VerticalSlabBlock(FabricBlockSettings.copyOf(RUSTY_SHEET_METAL_TREADING));
 
-    public static final Block RUSTY_SHEET_METAL_TREADING_STAIRS = new DustrialStairsBlock(RUSTY_SHEET_METAL_TREADING.getDefaultState(), FabricBlockSettings.copyOf(RUSTY_SHEET_METAL_TREADING));
+    public static final Block RUSTY_SHEET_METAL_TREADING_STAIRS = new StairsBlock(RUSTY_SHEET_METAL_TREADING.getDefaultState(), FabricBlockSettings.copyOf(RUSTY_SHEET_METAL_TREADING));
 
-    public static final Block RUSTY_SHEET_METAL_TRAPDOOR = new DustrialTrapdoor(FabricBlockSettings.of(Material.STONE).strength(1F, 1F).sounds(BlockSoundGroup.METAL));
+    public static final Block RUSTY_SHEET_METAL_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.of(Material.STONE).strength(1F, 1F).sounds(BlockSoundGroup.METAL));
 
-    public static final Block RUSTY_SHEET_METAL_DOOR = new DustrialDoor(FabricBlockSettings.copyOf(RUSTY_SHEET_METAL_TRAPDOOR));
+    public static final Block RUSTY_SHEET_METAL_DOOR = new DoorBlock(FabricBlockSettings.copyOf(RUSTY_SHEET_METAL_TRAPDOOR));
 
     public static final Block CINDER_BLOCK = new CinderBlock(FabricBlockSettings.copyOf(Blocks.STONE));
 
@@ -163,7 +162,7 @@ public class DustrialBlocks {
 
     public static final Block CINDER_BRICKS_VERTICAL_SLAB = new VerticalSlabBlock(FabricBlockSettings.copyOf(CINDER_BRICKS));
 
-    public static final Block CINDER_BRICKS_STAIRS = new DustrialStairsBlock(CINDER_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(CINDER_BRICKS));
+    public static final Block CINDER_BRICKS_STAIRS = new StairsBlock(CINDER_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(CINDER_BRICKS));
 
     //here CARDBOARD item
 
@@ -181,17 +180,17 @@ public class DustrialBlocks {
 
     public static final Block CARDBOARD_SCRAP = new CardboardBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.OAK_TAN).strength(1.0F, 0.3F).sounds(CARDBOARD_SOUND));
 
-    public static final Block CARDBOARD_TRAPDOOR = new DustrialTrapdoor(FabricBlockSettings.of(Material.DECORATION, MapColor.OAK_TAN).strength(1.0F, 0.3F).sounds(CARDBOARD_SOUND));
+    public static final Block CARDBOARD_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.OAK_TAN).strength(1.0F, 0.3F).sounds(CARDBOARD_SOUND));
 
-    public static final Block CARDBOARD_DOOR = new DustrialDoor(FabricBlockSettings.copyOf(CARDBOARD_TRAPDOOR));
+    public static final Block CARDBOARD_DOOR = new DoorBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.OAK_TAN).strength(1.0F, 0.3F).sounds(CARDBOARD_SOUND).nonOpaque());
 
     //  ARMOR then RUSTY HERE
 
     public static final Block RUSTY_IRON_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK));
 
-    public static final Block RUSTY_IRON_TRAPDOOR = new DustrialTrapdoor(FabricBlockSettings.copyOf(Blocks.IRON_DOOR));
+    public static final Block RUSTY_IRON_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.IRON_DOOR));
 
-    public static final Block RUSTY_IRON_DOOR = new DustrialDoor(FabricBlockSettings.copyOf(RUSTY_IRON_TRAPDOOR));
+    public static final Block RUSTY_IRON_DOOR = new DoorBlock(FabricBlockSettings.copyOf(RUSTY_IRON_TRAPDOOR));
 
     public static final Block WRAPPED_CHAINS = new PillarBlock(FabricBlockSettings.copyOf(Blocks.CHAIN));
 
@@ -199,9 +198,9 @@ public class DustrialBlocks {
 
 //    public static final Block WRAPPED_ICE_CHAINS = new PillarBlock(FabricBlockSettings.copyOf(Blocks.CHAIN));
 
-    public static final Block IRON_BAR_TRAPDOOR = new DustrialTrapdoor(FabricBlockSettings.copyOf(Blocks.IRON_BARS));
+    public static final Block IRON_BAR_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.IRON_BARS));
 
-    public static final Block IRON_BAR_DOOR = new DustrialDoor(FabricBlockSettings.copyOf(IRON_BAR_TRAPDOOR));
+    public static final Block IRON_BAR_DOOR = new DoorBlock(FabricBlockSettings.copyOf(IRON_BAR_TRAPDOOR));
 
     public static final Block REDSTONE_LANTERN = new LanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).luminance(blockState -> 7));
 
@@ -238,9 +237,7 @@ public class DustrialBlocks {
     public static final Block BLACK_LIGHT = new Block(FabricBlockSettings.copyOf(Blocks.GLOWSTONE).luminance(blockState -> 7));
 
     private static ToIntFunction<BlockState> getLightValueLit(int lightValue) {
-        return (state) -> {
-            return state.get(Properties.LIT) ? lightValue : 0;
-        };
+        return (state) -> state.get(Properties.LIT) ? lightValue : 0;
     }
 
     public static <B extends Block> B registerBlock(String name, B anyBlock) {

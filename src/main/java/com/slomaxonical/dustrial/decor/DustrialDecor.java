@@ -1,7 +1,6 @@
 package com.slomaxonical.dustrial.decor;
 
 import com.slomaxonical.dustrial.decor.configs.ConfigResourceCondition;
-import com.slomaxonical.dustrial.decor.config.DustrialDecorConfig;
 import com.slomaxonical.dustrial.decor.configs.DustrialConfigs;
 import com.slomaxonical.dustrial.decor.registry.DustrialBlocks;
 import com.slomaxonical.dustrial.decor.registry.DustrialItemGroup;
@@ -19,11 +18,10 @@ public class DustrialDecor implements ModInitializer{
 
     public static String MOD_ID = "dustrial_decor";
 
-    public static DustrialDecorConfig CONFIG;
-
     @Override
     public void onInitialize() {
         AutoConfig.register(DustrialConfigs.class, GsonConfigSerializer::new);
+
         DustrialBlocks.registerBlocks();
         ConfigResourceCondition.init();
         DustrialItems.registerItems();
